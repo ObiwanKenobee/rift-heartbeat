@@ -1,11 +1,19 @@
 import { motion } from 'framer-motion';
 import GeothermalCore from './GeothermalCore';
+import riftValleyHero from '@/assets/rift-valley-hero.jpg';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-earth" />
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${riftValleyHero})` }}
+      />
+      
+      {/* Dark overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background" />
       
       {/* Ambient glow */}
       <div 
@@ -44,20 +52,24 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <motion.button
-                className="px-8 py-4 bg-gradient-heat text-primary-foreground font-medium rounded-sm hover:opacity-90 transition-opacity"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Explore the System
-              </motion.button>
-              <motion.button
-                className="px-8 py-4 border border-primary/30 text-foreground font-medium rounded-sm hover:border-primary/60 hover:bg-primary/5 transition-all"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Read the Vision
-              </motion.button>
+              <Link to="/layers/geothermal">
+                <motion.button
+                  className="px-8 py-4 bg-gradient-heat text-primary-foreground font-medium rounded-sm hover:opacity-90 transition-opacity"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Explore the System
+                </motion.button>
+              </Link>
+              <Link to="/vision">
+                <motion.button
+                  className="px-8 py-4 border border-primary/30 text-foreground font-medium rounded-sm hover:border-primary/60 hover:bg-primary/5 transition-all"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Read the Vision
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
           
